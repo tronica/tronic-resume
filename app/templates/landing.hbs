@@ -1,0 +1,63 @@
+ <div class="py-20" style="background: linear-gradient(90deg, #ff7e5f 0%, #feb47b 100%)">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-2 text-white">
+      {{t 'landing.header' }}
+    </h2>
+    <h3 class="text-2xl mb-8 text-gray-200">
+      {{t 'landing.header_subtext' }}
+    </h3>
+
+    <div class="flex flex-grow">
+      <button
+        {{action 'signIn'}}
+        class="mr-4 bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+        {{t 'google_sign_in'}}
+      </button>
+      <img class="h-12 mt-1" src="images/logo_transparent_white.png"/>
+    </div>
+
+    {{#if signInError}}
+      <div class="animated fadeIn mt-10 bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+        <p class="font-bold">{{t 'errors.header' }}</p>
+        <p>{{t 'errors.signin_failed'}}</p>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<section class="container mx-auto px-6 p-10">
+      <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
+        {{t 'landing.how_it_works'}}
+      </h2>
+      <div class="flex items-center flex-wrap mb-20">
+        <div class="w-full md:w-1/2">
+          <h4 class="text-3xl text-gray-800 font-bold mb-3">{{t 'landing.connect_to_drive'}}</h4>
+          <p class="text-gray-600 mb-8">{{t 'landing.connect_to_drive_desc'}}</p>
+        </div>
+        <div class="w-40 mx-auto">
+          <img src="images/drive.svg" alt="Drive" />
+        </div>
+      </div>
+
+      <div class="flex items-center flex-wrap mb-20">
+        <div class="w-40 mx-auto">
+          <img src="images/form.svg" alt="Form" />
+        </div>
+        <div class="w-full md:w-1/2 pl-10">
+          <h4 class="text-3xl text-gray-800 font-bold mb-3">{{t 'landing.build_your_resume' }}</h4>
+          <p class="text-gray-600 mb-8">{{t 'landing.build_your_resume_desc'}}</p>
+        </div>
+      </div>
+
+      <div class="flex items-center flex-wrap mb-20">
+        <div class="w-full md:w-1/2">
+          <h4 class="text-3xl text-gray-800 font-bold mb-3">{{t 'landing.download_pdf' }}</h4>
+          <p class="text-gray-600 mb-8">{{t 'landing.download_pdf_desc' }}</p>
+        </div>
+        <div class="w-40 mx-auto">
+          <img src="images/download.svg" alt="Download" />
+        </div>
+      </div>
+    </section>
+
+{{partial 'common/footer'}}

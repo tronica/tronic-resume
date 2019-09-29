@@ -2,7 +2,10 @@ module.exports = {
   root: true,
   parserOptions: {
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true
+    }
   },
   plugins: [
     'ember'
@@ -15,6 +18,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    "no-console": "off"
   },
   overrides: [
     // node files

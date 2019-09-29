@@ -4,8 +4,33 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    babel: {
+      plugins: ['transform-object-rest-spread']
+    },
+    postcssOptions: {
+      compile: {
+        extension: 'scss',
+        enabled: true,
+        parser: require('postcss-scss'),
+        map: {
+          annotation: true,
+          inline: false,
+        },
+        plugins: [
+          {
+            module: require('@csstools/postcss-sass'),
+            options: {
+              includePaths: ['styles/app.scss'],
+            },
+          },
+          {
+            module: require('tailwindcss')
+          }
+        ]
+      }
+    }
   });
+
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

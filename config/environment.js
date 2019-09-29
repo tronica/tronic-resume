@@ -20,7 +20,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    DRIVE_API_CLIENT_ID: process.env.DRIVE_API_CLIENT_ID,
+    DRIVE_API_KEY: process.env.DRIVE_API_KEY
   };
 
   if (environment === 'development') {

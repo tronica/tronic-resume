@@ -1,0 +1,11 @@
+.page.renderer {
+
+  &.A4 {
+    width: 21cm;
+    height: 29.7cm;
+    margin: 27mm 16mm 27mm 16mm;
+  }
+
+  border: 1px solid gray;
+
+}

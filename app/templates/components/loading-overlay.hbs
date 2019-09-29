@@ -1,0 +1,12 @@
+<div
+  class="absolute top-0 left-0 w-full h-full pt-10"
+  style="background-color: rgba(0,0,0, 0.8)">
+  <div class="mt-20 mb-10 w-full text-center">
+    {{css-spinner}}
+  </div>
+  {{#each loadingMessages as |msg|}}
+    <div class="animated fadeIn w-64 mx-auto text-center text-white p-1">
+      <div>{{ msg }}</div>
+    </div>
+  {{/each}}
+</div>

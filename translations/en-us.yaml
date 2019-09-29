@@ -1,0 +1,27 @@
+google_sign_in: Sign in with Google
+async:
+  default_loading: We're working on it !
+  google_sign_in: Connecting to Google Drive
+  preparing_files: Preparing your files
+errors:
+  header: 'Oops !'
+  signin_failed: 'We were unable to log you in, please try again'
+landing:
+  header: Tronic resume builder
+  header_subtext: Free, open source, privacy focused
+  how_it_works: How it works
+  connect_to_drive: Connect to Drive
+  connect_to_drive_desc:
+    For privacy reasons, we do not store any of the user data on our servers.
+    The content of your resume lives exclusively on your google drive.
+  build_your_resume: Build your resume
+  build_your_resume_desc:
+    Select a theme. Fill in some information.
+    And voila ! A beautiful resume in minutes.
+  download_pdf: Download as a PDF
+  download_pdf_desc:
+    Update and download your resume as many times as you want.
+    Your data is rendered but never stored on our servers.
+
+
+
