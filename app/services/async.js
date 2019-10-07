@@ -1,52 +1,61 @@
-import { computed }                   from '@ember/object';
-import { run }                        from '@ember/runloop';
+import EmberObject, { computed }      from '@ember/object';
 import Service, { inject as service } from '@ember/service';
+import { A }                          from '@ember/array';
+import _                              from 'lodash';
 
 export default Service.extend({
 
   intl: service(),
 
-  tasks: [],
-
   init() {
     this._super(...arguments);
-    this.set('counter', 0);
+    this.set('tasks', A([]));
   },
 
   isLoading: computed('tasks.[]', function() {
     return this.get('tasks.length') > 0;
   }),
 
-  // counter: computed('tasks.length', function () {
-  //   return this.get('tasks.length');
-  // }),
-
   messages: computed('tasks.[]', function () {
     return this.get('tasks').mapBy('text').uniq();
   }),
 
+  defaultText: computed(function () {
+    return this.intl.t('async.default_loading');
+  }),
+
+  t(text) {
+    const translation = _.chain([ text, `async.${text}`])
+      .map(key => this.intl.exists(key) && this.intl.t(key))
+      .filter(_.isString)
+      .first()
+      .value();
+    
+    return translation || text;
+  },
+
   async runTask(text, job) {
-    run(async () => {
-      if (typeof text !== 'string') {
-        job = text;
-        text = this.intl.t('async.default_loading');
-      }
+    if (!_.isString(text)) {
+      job = text;
+      text = this.get('defaultText');
+    }
 
-      if (typeof job === 'function') {
-        return this.runTask(text, job());
-      }
+    if (_.isFunction(job)) {
+      return this.runTask(text, job());
+    }
 
-      const tasks = this.get('tasks');
-      const ref = { text };
+    const tasks = this.get('tasks');
+    const ref = EmberObject.create({ text: this.t(text) });
 
-      try {
-        tasks.pushObject(ref);
-        await job;
-        tasks.removeObject(ref);
-      } catch(e) {
-        tasks.removeObject(ref);
-        throw e;
-      }
-    });
+    tasks.pushObject(ref);
+
+    try {
+      const res = await job;
+      tasks.removeObject(ref);
+      return res;
+    } catch(e) {
+      tasks.removeObject(ref);
+      throw e;
+    }
   }
 });

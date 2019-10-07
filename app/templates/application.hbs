@@ -1,4 +1,9 @@
 {{#if showLoadingView}}
   {{loading-overlay loadingMessages=loadingMessages}}
 {{/if}}
+
+{{#if showNavBar}}
+  {{nav-bar}}
+{{/if}}
+
 {{outlet}}

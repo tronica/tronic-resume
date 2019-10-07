@@ -1,4 +1,22 @@
-<div class="page editor">
-  {{ files }}
-  <iframe src="/renderer"></iframe>
+<div class="page editor max-w-6xl mx-auto">
+  {{#if resume}}
+    <ul class="flex justify-center text-blue-500">
+      {{#each tabs as |tab|}}
+        <div class="p-3 w-32 text-center {{if tab.enabled 'border-b-2 border-blue-500'}}" {{action 'selectTab' tab}}>
+          <span class="mr-2">{{t (concat 'editor.' tab.name)}}</span> {{fa-icon icon=tab.icon}}
+        </div>
+      {{/each}}
+    </ul>
+
+    <div class="{{unless mode.edit 'hidden'}}">
+      <div class="flex pl-8 opacity-50 {{unless saving 'invisible'}}">
+        <div>{{fa-icon icon='save'}} Saving...</div>
+      </div>
+      {{partial 'forms/info-form'}}
+    </div>
+
+    <div class="{{unless mode.preview 'hidden'}}">
+      <iframe src="/renderer"></iframe>
+    </div>
+  {{/if}}
 </div>

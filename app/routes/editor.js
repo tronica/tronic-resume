@@ -1,4 +1,5 @@
-import Route from '@ember/routing/route';
+import AuthenticatedRoute     from './authenticated';
 
-export default Route.extend({
+export default AuthenticatedRoute.extend({
+  showNavBar: true
 });

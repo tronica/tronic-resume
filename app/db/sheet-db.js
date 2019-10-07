@@ -1,5 +1,5 @@
-import SheetTable         from './sheet-table';
-import SheetIO from './sheet-io';
+import SheetTable   from './sheet-table';
+import SheetIO      from './sheet-io';
 
 export default class SheetDB {
 
@@ -19,10 +19,14 @@ export default class SheetDB {
    * @returns {SheetTable}
    * @memberof SheetDB
    */
-  async table(name, schema) {
+  table(name, schema) {
     if (!this.tables[name]) {
-      this.tables[name] = new SheetTable(this, name, schema).init();
+      this.tables[name] = new SheetTable(this, name, schema);
     }
     return this.tables[name];
+  }
+
+  exists(name) {
+    return !!(this.tables[name]);
   }
 }

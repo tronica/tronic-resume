@@ -1,9 +1,12 @@
 // @ts-nocheck
+import _                              from 'lodash'
 import $                              from 'jquery';
 import ENV                            from '../config/environment';
 import { defer }                      from 'rsvp';
 import Service, { inject as service } from '@ember/service';
 import SheetDB                        from '../db/sheet-db';
+import { Schemas }                    from '../db/schemas';
+
 
 const ONLOAD_HANDLER = 'gapiReady';
 
@@ -112,12 +115,18 @@ export default Service.extend({
     let sheetId = await this.getSpreadSheet();
 
     if (!sheetId) {
-      console.log('Creating spreadhsheet');
       sheetId = await this.createFile();
     }
 
     this.set('sheetId', sheetId);
     this.set('db', new SheetDB(sheetId, this.gapi));
-    this.get('db').table('resumes');
+    this.set('tables', _.reduce(Schemas, (res, schema, name) => {
+      res[name] = this.get('db').table(name, schema);
+      return res;
+    }, {}));
+  },
+
+  resource(name) {
+    return this.get('tables')[name];
   }
 });

@@ -3,6 +3,7 @@ import { inject as service }  from '@ember/service';
 
 export default Controller.extend({
 
+  store: service(),
   intl: service(),
   async: service(),
   gdrive: service(),
@@ -14,6 +15,7 @@ export default Controller.extend({
       const job = async () => {
         try {
           await this.get('gdrive').signin();
+          this.transitionToRoute('editor');
         } catch (e) {
           this.set('signInError', true);
         }

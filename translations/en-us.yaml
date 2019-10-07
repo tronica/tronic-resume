@@ -3,6 +3,14 @@ async:
   default_loading: We're working on it !
   google_sign_in: Connecting to Google Drive
   preparing_files: Preparing your files
+  loading_resume: Loading your resume
+  loading_jobs: Re-tracing your career path
+nav:
+  logout: 'Logout'
+  login: 'Log in'
+editor:
+  edit: Edit
+  preview: Preview
 errors:
   header: 'Oops !'
   signin_failed: 'We were unable to log you in, please try again'
