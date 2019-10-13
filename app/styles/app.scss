@@ -1,5 +1,43 @@
+$color-primary-0: #6C63FF;	/* Main Primary color */
+$color-primary-1: #B9B5FF;
+$color-primary-2: #8F88FF;
+$color-primary-3: #473DFF;
+$color-primary-4: #2519FC;
+
+$color-second-0: #A658FF;	/* Main Secondary color (1) */
+$color-second-1: #D5B0FF;
+$color-second-2: #BB80FF;
+$color-second-3: #902FFF;
+$color-second-4: #7D0EFB;
+
+$color-third-0: #57ACFF;	/* Main Secondary color (2) */
+$color-third-1: #AFD8FF;
+$color-third-2: #7FC0FF;
+$color-third-3: #2D98FF;
+$color-third-4: #0D86FB;
+
+.bg-main-color {
+  background-color: $color-primary-0;
+}
+
+.text-second-color {
+  color: $color-second-0;
+}
+.border-second-color {
+  border-color: $color-second-0;
+}
+
+.text-third-color {
+  color: $color-third-0;
+}
+.border-third-color {
+  border-color: $color-third-0;
+}
+
+
 @import "addons";
 @import "components/css-spinner";
+@import "components/mouse-perspective";
 @import "pages/landing";
 @import "pages/renderer";
 @import "pages/editor";

@@ -1,0 +1,31 @@
+<div class="max-w-4xl mx-auto p-5 overflow-hidden">
+  {{#if imageSrc}}
+    <img class="h-64 mx-auto p-3 w-full" src="{{imageSrc}}">
+  {{/if}}
+  <div class="px-6 py-4">
+    {{#if title}}
+      <div class="font-bold text-xl my-10">{{ title }}</div>
+    {{/if}}
+    <div>
+      {{yield}}
+    </div>
+    <div class="flex justify-between">
+      <div>
+        {{#if onPrevious}}
+          <button class="button p-5 w-40 rounded text-center text-white bg-main-color" {{action onPrevious}}>
+            <i class="mr-2">{{fa-icon 'arrow-left'}}</i>
+            {{t 'previous'}}
+          </button>
+        {{/if}}
+      </div>
+      <div>
+        {{#if onNext}}
+          <button class="button p-5 w-40 rounded text-center text-white bg-main-color" {{action onNext}}>
+            {{t 'next'}}
+            <i class="ml-2">{{fa-icon 'arrow-right'}}</i>
+          </button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,7 @@
 google_sign_in: Sign in with Google
+next: Next
+previous: Previous
+saving: Saving
 async:
   default_loading: We're working on it !
   google_sign_in: Connecting to Google Drive
@@ -30,6 +33,17 @@ landing:
   download_pdf_desc:
     Update and download your resume as many times as you want.
     Your data is rendered but never stored on our servers.
+form:
+  about_you: Tell us about yourself
+  job_experience: Your work experience
+  new_job: New job experience
+  first_name: First name
+  last_name: Last name
+  title: Title
+  email: Email
+  phone: Phone
+  website: Website
+  description: Intro
 
 
 

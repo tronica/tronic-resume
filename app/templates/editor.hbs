@@ -1,22 +1,46 @@
 <div class="page editor max-w-6xl mx-auto">
   {{#if resume}}
-    <ul class="flex justify-center text-blue-500">
-      {{#each tabs as |tab|}}
-        <div class="p-3 w-32 text-center {{if tab.enabled 'border-b-2 border-blue-500'}}" {{action 'selectTab' tab}}>
-          <span class="mr-2">{{t (concat 'editor.' tab.name)}}</span> {{fa-icon icon=tab.icon}}
+    {{saving-toast show=saving}}
+    <div class="tab-container">
+      <div class="tab-scroll idx-{{tabIdx}}">
+
+        {{!-- INFOS --}}
+        <div class="tab px-8">
+          <div>
+            {{#step-card
+              title=(t 'form.about_you')
+              imageSrc="images/undraw_profile.svg"
+              onNext=(action 'selectTab' nextTab)
+            }}
+              {{partial 'forms/info-form'}}
+            {{/step-card}}
+          </div>
         </div>
-      {{/each}}
-    </ul>
 
-    <div class="{{unless mode.edit 'hidden'}}">
-      <div class="flex pl-8 opacity-50 {{unless saving 'invisible'}}">
-        <div>{{fa-icon icon='save'}} Saving...</div>
-      </div>
-      {{partial 'forms/info-form'}}
-    </div>
+        {{!-- JOBS --}}
+        <div class="tab px-8">
+          <div>
+            {{#step-card
+              title=(t 'form.job_experience')
+              imageSrc="images/undraw_resume_folder.svg"
+              onPrevious=(action 'selectTab' previousTab)
+              onNext=(action 'selectTab' nextTab)
+            }}
+              {{partial 'forms/jobs-list'}}
+            {{/step-card}}
+          </div>
+        </div>
 
-    <div class="{{unless mode.preview 'hidden'}}">
-      <iframe src="/renderer"></iframe>
+        {{!-- PREVIEW --}}
+        <div class="tab px-8 {{unless mode.preview 'off' 'on'}}">
+          {{#step-card
+            onNext=(action 'selectTab' nextTab)
+            onPrevious=(action 'selectTab' previousTab)
+          }}
+            <iframe src="/renderer"></iframe>
+          {{/step-card}}
+        </div>
+        </div>
     </div>
   {{/if}}
 </div>

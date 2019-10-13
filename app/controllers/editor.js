@@ -12,18 +12,25 @@ export default Controller.extend(Async, {
     this._super(...arguments);
     this.set('model', null);
     this.set('tabs', [
-      EmberObj.create({ name: 'edit',    enabled: true,  icon: 'edit' }),
-      EmberObj.create({ name: 'preview', enabled: false, icon: 'desktop' })
+      EmberObj.create({ name: 'info',    enabled: true }),
+      EmberObj.create({ name: 'jobs',    enabled: false }),
+      EmberObj.create({ name: 'preview', enabled: false })
     ]);
   },
 
-  mode: computed('tabs.@each.enabled', function () {
-    const name = this.get('tabs').findBy('enabled', true).get('name');
-    return {
-      name:     name,
-      edit:     name === 'edit',
-      preview:  name === 'preview'
-    }
+  tabIdx: computed('tabs.@each.enabled', function () {
+    return this.get('tabs').findIndex(t => t.enabled);
+  }),
+
+  nextTab: computed('tabIdx', function () {
+    return this.get('tabs')[this.get('tabIdx') + 1];
+  }),
+
+  previousTab: computed('tabs.@each.enabled', function () {
+    const tabs  = this.get('tabs');
+    const idx   = this.get('tabIdx');
+
+    return idx === 0 ? null : tabs[idx - 1];
   }),
 
   resource(name) {
