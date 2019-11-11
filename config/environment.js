@@ -1,5 +1,12 @@
 'use strict';
 
+const yaml = require('js-yaml');
+const fs   = require('fs');
+const path = require('path');
+
+const themeFile = path.join(__dirname, '..', 'themes.yml');
+const themes    = yaml.safeLoad(fs.readFileSync(themeFile, 'utf8'));
+
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'tronic-resume',
@@ -20,6 +27,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      THEMES: themes
     },
 
     DRIVE_API_CLIENT_ID: process.env.DRIVE_API_CLIENT_ID,

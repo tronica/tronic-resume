@@ -1,0 +1,19 @@
+<div>
+  <div class="flex justify-around">
+    {{styled-input
+      type='select'
+      options=themes.all
+      value=themes.selectedTheme
+      label=(t 'editor.select_theme')
+      on-change=(action 'prepareRender')
+    }}
+  </div>
+  <div class="link-container flex justify-around">
+    <div><a href="/renderer/{{renderId}}" target="_blank">{{t 'fullscreen_preview' }}</a></div>
+  </div>
+  {{#if renderId}}
+    <div class="preview-holder">
+      <iframe src="/renderer/{{renderId}}"></iframe>
+    </div>
+  {{/if}}
+</div>

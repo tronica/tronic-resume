@@ -6,10 +6,13 @@ const ARRAY_REXP = /\[\]$/;
 const DESERIALIZERS = {
   'date': (val) => new Date(val),
   'number': (val) => Number(val),
+  'ref': (val) => Number(val),
+  'bool': (val) => String(val).toLowerCase() === 'true',
+  'boolean': (val) => String(val).toLowerCase() === 'true'
 };
 
 const SERIALIZERS = {
-  'ref': (val) => _.isString(val) ? val : val.id
+  'ref': (val) => _.isObject(val) ? val.id : String(val)
 };
 
 const identity = (val) => val;
@@ -32,7 +35,7 @@ class Schema {
    * @memberof Schema
    */
   constructor(fields) {
-    this.fields = { ...fields, id: 'number' };
+    this.fields = { ...fields, id: 'number', updatedAt: 'date', createdAt: 'date' };
     this.keys = Object.keys(this.fields);
     this.relationships = _.pickBy(this.fields, isRef);
   }
@@ -134,10 +137,25 @@ export const JobSchema = new Schema({
   position:     'string',
   startDate:    'date',
   endDate:      'date',
-  description:  'string'
+  description:  'string',
+  location:     'string',
+  active:       'boolean',
+  archived:     'boolean'
+});
+
+export const StudySchema = new Schema({
+  resumeId:     'ref',
+  school:       'string',
+  degree:       'string',
+  startDate:    'date',
+  endDate:      'date',
+  location:     'string',
+  active:       'boolean',
+  archived:     'boolean'
 });
 
 export const Schemas = {
   'resumes':  ResumeSchema,
-  'jobs':     JobSchema
+  'jobs':     JobSchema,
+  'studies':  StudySchema
 };

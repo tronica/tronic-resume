@@ -5,9 +5,9 @@ import { getOwner }           from '@ember/application';
 
 export default Controller.extend({
 
-  async: service(),
-  showLoadingView: computed.alias('async.isLoading'),
-  loadingMessages: computed.alias('async.messages'),
+  async:            service(),
+  showLoadingView:  computed.alias('async.isLoading'),
+  loadingMessages:  computed.alias('async.messages'),
 
   currentRoute: computed('currentRouteName', function () {
     const routeName = this.get('currentRouteName');

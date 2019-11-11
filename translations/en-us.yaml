@@ -2,6 +2,13 @@ google_sign_in: Sign in with Google
 next: Next
 previous: Previous
 saving: Saving
+yes: Yes
+no: No
+fullscreen_preview: view fullscreen
+modal:
+  default_head: Are you sure ?
+  confirm: I am sure
+  cancel: Cancel
 async:
   default_loading: We're working on it !
   google_sign_in: Connecting to Google Drive
@@ -14,6 +21,7 @@ nav:
 editor:
   edit: Edit
   preview: Preview
+  select_theme: Pick a theme
 errors:
   header: 'Oops !'
   signin_failed: 'We were unable to log you in, please try again'
@@ -36,7 +44,9 @@ landing:
 form:
   about_you: Tell us about yourself
   job_experience: Your work experience
-  new_job: New job experience
+  education: Education
+  new_job: Add work experience
+  new_study: Add education
   first_name: First name
   last_name: Last name
   title: Title
@@ -44,6 +54,24 @@ form:
   phone: Phone
   website: Website
   description: Intro
+  study:
+    school: School nname
+    degree: Degree
+    location: Country/City
+    start_date: Start Date
+    end_date: End Date
+    active: Currently studying
+  job:
+    title: Job title
+    company: Company
+    location: Country/City
+    start_date: Start Date
+    end_date: End Date
+    description: Description
+    active: Ongoing
+    modal:
+      confirm_delete_body: Once deleted, a record cannnot be recovered
+
 
 
 

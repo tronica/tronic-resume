@@ -59,9 +59,12 @@ export default class SheetTable {
 
     let idx = this.records.findIndex(r => r.id === record.id);
 
+    record.updatedAt = new Date();
+
     if (idx < 0) { // New record
       record.id = this.nextId();
       idx = this.records.length;
+      record.createdAt = new Date();
     }
 
     const row = this.schema.serialize(record, this.columns);

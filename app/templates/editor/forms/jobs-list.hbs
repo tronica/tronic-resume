@@ -1,0 +1,97 @@
+<div>
+  {{#the-expandables list=resume.jobs as |job|}}
+    <div class="border border-purple-600 p-5 w-full rounded overflow-hidden shadow-lg my-10 hover:shadow-xl">
+      <div class="w-full flex justify-between block uppercase tracking-wide text-gray-700 text-sm font-bold mb-5">
+        <div {{action (toggle job "expanded")}}>
+          {{ job.record.position }} {{if job.record.company ' / '}} {{ job.record.company }}
+        </div>
+        <div>
+          <i class="hover:text-red-500" {{action 'archiveRecord' job.record}}>{{fa-icon 'trash' size='lg'}}</i>
+          <i class="ml-3" {{action (toggle job "expanded")}}>
+            {{#if job.expanded}}
+              {{fa-icon 'angle-double-up' size='lg'}}
+            {{else}}
+              {{fa-icon 'angle-double-down' size='lg'}}
+            {{/if}}
+          </i>
+        </div>
+      </div>
+      {{#if job.expanded}}
+        <form class="animated fadeIn">
+          <div class="md:flex-1 mt-2 mb:mt-0 px-2 mb-8 -mx-2">
+            {{styled-input
+              label=(t 'form.job.title')
+              type="text"
+              value=job.record.position
+              on-change=(action 'persist')
+              placeholder="Project Manager"
+            }}
+          </div>
+          <div class="md:flex mb-8 -mx-2">
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.job.company')
+                type="text"
+                value=job.record.company
+                on-change=(action 'persist')
+                placeholder="MyEnterprise Inc."
+              }}
+            </div>
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.job.location')
+                type="text"
+                value=job.record.location
+                on-change=(action 'persist')
+                placeholder="Hong Kong"
+              }}
+            </div>
+          </div>
+          <div class="md:flex mb-8 -mx-2">
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.job.start_date')
+                type="date"
+                value=job.record.startDate  
+                on-change=(action 'persist')
+              }}
+            </div>
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.job.end_date')
+                type="date"
+                value=job.record.endDate
+                on-change=(action 'persist')
+                disabled=job.record.active
+              }}
+            </div>
+            <div class="w-2 md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.job.active')
+                type="checkbox"
+                value=job.record.active
+                on-change=(action 'persist')
+              }}
+            </div>
+          </div>
+          <div class="md:flex-1 mt-2 mb:mt-0 px-2 mb-8 -mx-2">
+            {{styled-input
+              label=(t 'form.job.description')
+              type="rich"
+              value=job.record.description
+              on-change=(action 'persist')
+              placeholder="Responsabilities, achievements, ..."
+            }}
+          </div>
+        </form>
+      {{/if}}
+    </div>
+  {{/the-expandables}}
+
+  <div class="w-full rounded overflow-hidden shadow-lg my-10 cursor-pointer hover:shadow-xl" {{action 'addJob'}}>
+    <img class="w-full h-20" src="/images/undraw_add_file.svg" alt="Sunset in the mountains">
+    <div class="px-6 py-4">
+      <div class="text-center w-full mb-2">{{t 'form.new_job' }}</div>
+    </div>
+  </div>
+</div>

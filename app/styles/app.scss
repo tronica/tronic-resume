@@ -16,6 +16,10 @@ $color-third-2: #7FC0FF;
 $color-third-3: #2D98FF;
 $color-third-4: #0D86FB;
 
+ul li {
+  list-style-type: disc
+}
+
 .bg-main-color {
   background-color: $color-primary-0;
 }
@@ -35,10 +39,11 @@ $color-third-4: #0D86FB;
 }
 
 
+@import "mixins";
 @import "addons";
 @import "components/css-spinner";
-@import "components/mouse-perspective";
+@import "components/toggle-switch";
 @import "pages/landing";
 @import "pages/renderer";
 @import "pages/editor";
-@import "themes/default/index";
+@import "themes/tronica/index";

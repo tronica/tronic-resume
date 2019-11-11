@@ -12,7 +12,7 @@
               imageSrc="images/undraw_profile.svg"
               onNext=(action 'selectTab' nextTab)
             }}
-              {{partial 'forms/info-form'}}
+              {{partial 'editor/forms/info-form'}}
             {{/step-card}}
           </div>
         </div>
@@ -26,7 +26,21 @@
               onPrevious=(action 'selectTab' previousTab)
               onNext=(action 'selectTab' nextTab)
             }}
-              {{partial 'forms/jobs-list'}}
+              {{partial 'editor/forms/jobs-list'}}
+            {{/step-card}}
+          </div>
+        </div>
+
+        {{!-- EDUCATION --}}
+        <div class="tab px-8">
+          <div>
+            {{#step-card
+              title=(t 'form.education')
+              imageSrc="images/undraw_graduation.svg"
+              onPrevious=(action 'selectTab' previousTab)
+              onNext=(action 'selectTab' nextTab)
+            }}
+              {{partial 'editor/forms/studies-list'}}
             {{/step-card}}
           </div>
         </div>
@@ -34,13 +48,13 @@
         {{!-- PREVIEW --}}
         <div class="tab px-8 {{unless mode.preview 'off' 'on'}}">
           {{#step-card
-            onNext=(action 'selectTab' nextTab)
             onPrevious=(action 'selectTab' previousTab)
+            onNext=false
           }}
-            <iframe src="/renderer"></iframe>
+            {{partial 'editor/preview'}}
           {{/step-card}}
         </div>
-        </div>
+      </div>
     </div>
   {{/if}}
 </div>

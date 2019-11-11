@@ -1,0 +1,17 @@
+<label class="tronic toggle-switch {{if disabled 'disabled'}}">
+  {{input type='checkbox' checked=value}}
+  <span class="slider">
+    <span class="switch-label on">
+      {{#if on-icon}}
+        {{fa-icon on-icon size="md"}}
+      {{/if}}
+      {{if on-text on-text (t 'yes')}}
+    </span>
+    <span class="switch-label off">
+      {{#if off-icon}}
+        {{fa-icon off-icon size="md"}}
+      {{/if}}
+      {{if off-text off-text (t 'no')}}
+    </span>
+  </span>
+</label>

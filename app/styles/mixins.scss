@@ -1,0 +1,4 @@
+@mixin A4($scale : 1) {
+  width: 21cm * $scale;
+  height: 29.7cm * $scale;
+}

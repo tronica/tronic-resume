@@ -1,0 +1,77 @@
+<div>
+  {{#the-expandables list=resume.studies as |study|}}
+    <div class="border border-purple-600 p-5 w-full rounded overflow-hidden shadow-lg my-10 hover:shadow-xl">
+      <div class="w-full flex justify-between block uppercase tracking-wide text-gray-700 text-sm font-bold mb-5">
+        <div {{action (toggle study "expanded")}}>
+          {{ study.record.school }} {{if study.record.company ' / '}} {{ study.record.company }}
+        </div>
+        <div>
+          <i class="hover:text-red-500" {{action 'archiveRecord' study.record}}>{{fa-icon 'trash' size='lg'}}</i>
+          <i class="ml-3" {{action (toggle study "expanded")}}>
+            {{#if study.expanded}}
+              {{fa-icon 'angle-double-up' size='lg'}}
+            {{else}}
+              {{fa-icon 'angle-double-down' size='lg'}}
+            {{/if}}
+          </i>
+        </div>
+      </div>
+      {{#if study.expanded}}
+        <form class="animated fadeIn">
+          <div class="md:flex-1 mt-2 mb:mt-0 px-2 mb-8 -mx-2">
+            {{styled-input
+              label=(t 'form.study.school')
+              type="text"
+              value=study.record.school
+              on-change=(action 'persist')
+              placeholder="Fun University"
+            }}
+          </div>
+          <div class="md:flex-1 mt-2 mb:mt-0 px-2 mb-8 -mx-2">
+            {{styled-input
+              label=(t 'form.study.degree')
+              type="text"
+              value=study.record.degree
+              on-change=(action 'persist')
+              placeholder="Masters of Science"
+            }}
+          </div>
+          <div class="md:flex mb-8 -mx-2">
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.study.start_date')
+                type="date"
+                value=study.record.startDate
+                on-change=(action 'persist')
+              }}
+            </div>
+            <div class="md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.study.end_date')
+                type="date"
+                value=study.record.endDate
+                on-change=(action 'persist')
+                disabled=study.record.active
+              }}
+            </div>
+            <div class="w-2 md:flex-auto mt-2 mb:mt-0 px-2">
+              {{styled-input
+                label=(t 'form.study.active')
+                type="checkbox"
+                value=study.record.active
+                on-change=(action 'persist')
+              }}
+            </div>
+          </div>
+        </form>
+      {{/if}}
+    </div>
+  {{/the-expandables}}
+
+  <div class="w-full rounded overflow-hidden shadow-lg my-10 cursor-pointer hover:shadow-xl" {{action 'addStudy'}}>
+    <img class="w-full h-20" src="/images/undraw_add_file.svg">
+    <div class="px-6 py-4">
+      <div class="text-center w-full mb-2">{{t 'form.new_study' }}</div>
+    </div>
+  </div>
+</div>

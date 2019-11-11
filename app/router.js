@@ -8,7 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('landing', { path: '/' });
-  this.route('renderer');
+  this.route('renderer', { path: 'renderer/:render_id' });
   this.route('editor');
 });
 

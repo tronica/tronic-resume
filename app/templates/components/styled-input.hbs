@@ -1,0 +1,49 @@
+<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{ label }}</label>
+{{#if (eq type 'textarea')}}
+  {{textarea
+    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+    type="text"
+    value=value
+    focus-out=on-change
+    key-down=on-change
+    placeholder=placeholder
+    disabled=disabled
+  }}
+{{else if (eq type 'rich')}}
+  {{quill-editor
+      placeholder=placeholder
+      value=html
+      textChange=(action 'setHTML')
+    }}
+{{else if (eq type 'select')}}
+  <div>
+    <select
+      class="mx-auto bg-white border border-purple-600 h-10 w-64 appearance-none"
+      onchange={{action "selectOption" value="target.value"}}>
+        {{#each options as |option|}}
+          <option value={{option.id}} selected={{eq value option}}>{{option.name}}</option>
+        {{/each}}
+    </select>
+  </div>
+{{else if (eq type 'date')}}
+  {{pikaday-input
+      class=(concat (if disabled 'opacity-50') " appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500")
+      onSelection=(action 'setValue')
+      value=value
+      disabled=disabled
+  }}
+{{else if (eq type 'checkbox')}}
+  {{toggle-switch
+    value=value
+    on-change=(action 'notifyChange')
+  }}
+{{else}}
+  {{input
+    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+    type=type
+    value=value
+    focus-out=on-change
+    key-down=on-change
+    placeholder=placeholder
+  }}
+{{/if}}

@@ -1,0 +1,75 @@
+<form class="">
+  <div class="md:flex mb-8 -mx-2">
+    <div class="md:flex-1 mt-2 mb:mt-0 px-2">
+      {{styled-input
+        label=(t 'form.first_name')
+        type="text"
+        value=resume.info.firstName  
+        on-change=(action 'persist')
+        placeholder="Freddy"
+      }}
+    </div>
+    <div class="md:flex-1 mt-2 mb:mt-0 px-2">
+      {{styled-input
+        label=(t 'form.last_name')
+        type="text"
+        value=resume.info.lastName  
+        on-change=(action 'persist')
+        placeholder="Mercury"
+      }}
+    </div>
+  </div>
+  <div class="md:flex mb-8">
+    <div class="md:flex-1 mt-2 mb:mt-0">
+      {{styled-input
+        label=(t 'form.title')
+        type="text"
+        value=resume.info.title  
+        on-change=(action 'persist')
+        placeholder="Software Engineer"
+      }}
+    </div>
+  </div>
+  <div class="md:flex mb-8 -mx-2">
+    <div class="md:flex-1 mt-2 mb:mt-0 px-2">
+      {{styled-input
+        label=(t 'form.email')
+        type="email"
+        value=resume.info.email  
+        on-change=(action 'persist')
+        placeholder="patrick@tronica.io"
+      }}
+    </div>
+  </div>
+  <div class="md:flex mb-8">
+    <div class="md:flex-1 mt-2 mb:mt-0 px-2">
+      {{styled-input
+        label=(t 'form.phone')
+        type="tel"
+        value=resume.info.phone  
+        on-change=(action 'persist')
+        placeholder="+111 4321 1234"
+      }}
+    </div>
+    <div class="md:flex-1 mt-2 mb:mt-0">
+      {{styled-input
+        label=(t 'form.website')
+        type="tel"
+        value=resume.info.website  
+        on-change=(action 'persist')
+        placeholder="tronica.io"
+      }}
+    </div>
+  </div>
+  <div class="md:flex mb-8">
+    <div class="md:flex-1 mt-2 mb:mt-0">
+      {{styled-input
+        label=(t 'form.description')
+        type="textarea"
+        value=resume.info.intro  
+        on-change=(action 'persist')
+        placeholder="Something about me"
+      }}
+    </div>
+  </div>
+</form>
