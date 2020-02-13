@@ -23,3 +23,8 @@ testem.log
 .node_modules.ember-try/
 bower.json.ember-try
 package.json.ember-try
+
+app/styles/themes/*
+app/templates/themes/*
+!app/styles/themes/tronica
+!app/templates/themes/tronica

@@ -18,6 +18,10 @@ You will need the following things properly installed on your computer.
 * `cd tronic-resume`
 * `npm install`
 
+## Installing remote themes
+
+* `npm run themes`
+
 ## Running / Development
 
 * `ember serve`
