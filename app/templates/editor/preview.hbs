@@ -8,12 +8,14 @@
       on-change=(action 'prepareRender')
     }}
   </div>
-  <div class="link-container flex justify-around">
+  <div class="link-container flex justify-center">
     <div><a href="/renderer/{{renderId}}" target="_blank">{{t 'fullscreen_preview' }}</a></div>
+    <span class="mx-1">|</span>
+    <div><a href="#" {{action 'print'}}>{{t 'downnload_pdf' }}</a></div>
   </div>
   {{#if renderId}}
     <div class="preview-holder">
-      <iframe src="/renderer/{{renderId}}"></iframe>
+      <iframe src="/renderer/{{renderId}}" id="{{renderId}}"></iframe>
     </div>
   {{/if}}
 </div>

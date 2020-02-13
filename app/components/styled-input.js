@@ -13,8 +13,10 @@ export default Component.extend({
       this.send('setValue', quill.root.innerHTML);
     },
 
-    selectOption({ id }) {
-      this.send('setValue', this.get('options').findBy('id', id));
+    selectOption(id) {
+      this.send('setValue', this.get('options').find((opt) => {
+        return opt.id == id;
+      }));
     },
 
     setValue(value) {

@@ -38,6 +38,10 @@ export default Controller.extend(Async, {
     return idx === 0 ? null : tabs[idx - 1];
   }),
 
+  readFrameHTML() {
+    return window.frames[this.get('renderId')].contentDocument.documentElement.innerHTML;
+  },
+
   resource(name) {
     return this.get('gdrive').resource(name);
   },

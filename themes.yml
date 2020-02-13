@@ -6,3 +6,9 @@
   author: Patrick R
   author_url: https://tronica.io
   local: true
+
+- name: Blox
+  author: Patrick R
+  author_url: https://tronica.io
+  repo: git@github.com:tronica/blox-cv-theme.git
+  commit: 61198aeb81e8e1f52f8d4419bbdc1ed353472293

@@ -5,6 +5,7 @@ saving: Saving
 yes: Yes
 no: No
 fullscreen_preview: view fullscreen
+downnload_pdf: download as pdf
 modal:
   default_head: Are you sure ?
   confirm: I am sure
