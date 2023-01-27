@@ -57,7 +57,7 @@
     "fs-extra": "^8.1.0",
     "loader.js": "^4.2.3",
     "node-emoji": "^1.10.0",
-    "simple-git": "^1.126.0",
+    "simple-git": "^3.16.0",
     "tmp": "^0.1.0"
   },
   "engines": {
